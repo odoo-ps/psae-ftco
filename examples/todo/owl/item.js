@@ -1,6 +1,8 @@
-class Item extends Component {
+const {Component, xml} = owl;
+
+export class Item extends Component {
     setup() {
-        this.removeToDo = () => this.env.bus.trigger("remove-to-do", this.props.id);
+        this.remove = () => this.env.bus.trigger("remove-to-do", this.props.id);
     }
 
     static props = ["id", "name"];
@@ -8,6 +10,6 @@ class Item extends Component {
     static template = xml`
     <div t-att-id="props.id">
         <p t-out="props.name"/>
-        <button t-on-click="removeToDo">Remove</button>
+        <button t-on-click="remove">Remove</button>
     </div>`;
 }
