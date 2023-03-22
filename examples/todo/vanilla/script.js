@@ -1,22 +1,23 @@
 document.addEventListener("click", ev => {
-    const addButton = document.getElementById("add-button");
-    if (ev.target === addButton) {
-        addToDo();
-    } else if (ev.target.className === "remove-button")
-        removeToDo(ev.target);
+    if (ev.target.className === "add-todo") {
+        addTodo();
+    } else if (ev.target.className === "remove-todo")
+        removeTodo(ev.target);
 })
 
-const addToDo = () => {
-    const text = document.getElementById("text");
-    const list = document.getElementById("list");
-    if (!text.value) return;
+const addTodo = () => {
+    const itemText = document.getElementById("todo-text");
+    if (!itemText.value) return;
+
+    const itemList = document.getElementById("todo-list");
     const item = document.createElement("div");
-    item.className = "item";
-    item.innerHTML = `<p>${text.value}</p><button class="remove-button">Remove</button>`;
-    list.insertBefore(item, list.firstChild);
-    text.value = "";
+    item.className = "todo";
+    item.innerHTML = `<p>${itemText.value}</p><button class="remove-todo">Remove</button>`;
+    itemList.insertBefore(item, itemList.firstChild);
+
+    itemText.value = "";
 }
 
-const removeToDo = (target) => {
+const removeTodo = (target) => {
     target.parentElement.remove();
 }
