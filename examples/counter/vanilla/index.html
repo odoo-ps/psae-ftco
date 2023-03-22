@@ -5,5 +5,12 @@
 </head>
 <input type="number" id="counter" value="0" aria-label="counter">
 <button id="incrementor">Increment</button>
-<script src="script.js"></script>
+<script type="text/javascript">
+    const button = document.getElementById("incrementor");
+    const counter = document.getElementById("counter");
+
+    button.addEventListener("click", () => {
+        counter.value++;
+    });
+</script>
 </html>
