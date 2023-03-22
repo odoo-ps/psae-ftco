@@ -3,7 +3,7 @@ const {Component, useState, xml} = owl;
 export class Content extends Component {
     setup() {
         this.state = useState({"todoText": ""});
-        this.add = () => {
+        this.addTodo = () => {
             this.env.bus.trigger("add-todo", this.state.todoText);
             this.state.todoText = "";
         }
@@ -12,7 +12,7 @@ export class Content extends Component {
     static template = xml`
     <div id="content">
         <textarea t-model="state.todoText" cols="30" rows="5"/>
-        <button t-on-click="add">Add</button>
+        <button t-on-click="addTodo">Add</button>
     </div>
     `;
 }
